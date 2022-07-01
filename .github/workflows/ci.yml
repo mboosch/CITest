@@ -1,0 +1,17 @@
+name: CI
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: action/checkout@v3
+      - name: Setup
+        uses: actions/setup-java@v3
+        with:
+          java-version: "18"
+          distribution: "temurin"
+      - name: Build
+        run: mvn -B package --file pom.xml
+
